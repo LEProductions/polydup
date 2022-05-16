@@ -96,6 +96,7 @@ function move(tile,des) {
     units[tile] = 0;
   }      
   else  {
+    removeshow(tile,des);
     alert("cant move here");
   }
 }
