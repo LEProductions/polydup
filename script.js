@@ -92,7 +92,7 @@ function move(tile,des) {
   document.getElementById('tile'+tile).innerHTML = "";
   if (units[tile] == 1 && board[des] != 0) {
     document.getElementById('tile'+des).innerHTML = "<img src='pics/bob2.png'/>";
-    units[des] = 1;
+    units[des] = units[tile];
     units[tile] = 0;
   }      
 }
