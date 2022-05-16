@@ -96,7 +96,7 @@ function move(tile,des) {
     units[tile] = 0;
   }      
   else  {
-    alert("water tile");
+    alert("cant move here");
   }
 }
 function showmove(tile) {
