@@ -72,24 +72,47 @@ function pay(amount) {
 }
 function buy(tile) {
   //opens specific tile menu should include buy buttons in .innerHTML statements should redirect to newThings then to pay
-  if (board[tile] == 1) {
+  if (units[tile] == 1) {
+    document.getElementById('buy').innerHTML = "<h1>Bob</h1>";
+    showmove(tile);
+  }
+  else if (board[tile] == 1) {
     document.getElementById('buy').innerHTML = "<h1>Land</h1>";
   }
   else if (board[tile] == 2) {
     document.getElementById('buy').innerHTML = "<h1>City</h1><buys onclick='newThing(`bob`,"+tile+");'>Bob</buys>";
-  }
-  else if (units[tile] == 1) {
-    document.getElementById('buy').innerHTML = "<h1>Bob</h1>";
-    showmove(tile);
   }
   else {
     document.getElementById('buy').innerHTML = "<h1>Water</h1><buys onclick='newThing(`port`,"+tile+");'>Port</buys>";
   }
   document.getElementById('buy').style.display = "block";
 }
-function move(tile,bobmove) {
-  
+function move(tile,des) { 
+  removeshow(tile,des);
+  document.getElementById('tile'+tile).innerHTML = "";
+  if (units[tile] == 1 && board[des] != 0) {
+    document.getElementById('tile'+des).innerHTML = "<img src='pics/bob2.png'/>";
+  }      
 }
 function showmove(tile) {
-  
+  if (units[tile] == 1) {
+    document.getElementById('tile'+(tile-10)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile-10)+");'/>";
+    document.getElementById('tile'+(tile-9)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile-9)+");'/>";
+    document.getElementById('tile'+(tile-11)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile-11)+");'/>";
+    document.getElementById('tile'+(tile+1)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+1)+");'/>";
+    document.getElementById('tile'+(tile-1)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile-1)+");'/>";
+    document.getElementById('tile'+(tile+10)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+10)+");'/>";
+    document.getElementById('tile'+(tile+9)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+9)+");'/>";
+    document.getElementById('tile'+(tile+11)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+11)+");'/>";
+  }     
+}
+function removeshow(tile,des) {
+    document.getElementById('tile'+(tile-10)).innerHTML = "";
+    document.getElementById('tile'+(tile-9)).innerHTML = "";
+    document.getElementById('tile'+(tile-11)).innerHTML = "";
+    document.getElementById('tile'+(tile+1)).innerHTML = "";
+    document.getElementById('tile'+(tile-1)).innerHTML = "";
+    document.getElementById('tile'+(tile+10)).innerHTML = "";
+    document.getElementById('tile'+(tile+9)).innerHTML = "";
+    document.getElementById('tile'+(tile+11)).innerHTML = "";
 }
