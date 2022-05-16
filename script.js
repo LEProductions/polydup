@@ -91,7 +91,7 @@ function buy(tile) {
   document.getElementById('buy').style.display = "block";
 }
 function move(tile,des) { 
-  if (units[tile] == 1 && board[des] != 0) {
+  if (units[tile] == 1 && board[des] == 1) {
     removeshow(tile,des);
     document.getElementById('tile'+tile).innerHTML = "";
     document.getElementById('tile'+des).innerHTML = "<img src='pics/bob2.png'/>";
