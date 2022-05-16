@@ -8,7 +8,7 @@ board
 3 = port
 units
 1 = bob
-
+10 = ship
 
 
 
@@ -102,7 +102,14 @@ function move(tile,des) {
     removeshow(tile,des);
     document.getElementById('tile'+tile).innerHTML = "";
     document.getElementById('tile'+des).innerHTML = "<img src='pics/ship.png'/>";
-    units[des] = units[tile];
+    units[des] = 10;
+    units[tile] = 0;
+  } 
+  else if (units[tile] == 10 && board[des] == 0) {
+    removeshow(tile,des);
+    document.getElementById('tile'+tile).innerHTML = "";
+    document.getElementById('tile'+des).innerHTML = "<img src='pics/ship.png'/>";
+    units[des] = 10;
     units[tile] = 0;
   } 
   else  {
@@ -120,7 +127,17 @@ function showmove(tile) {
     document.getElementById('tile'+(tile+10)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+10)+");'/>";
     document.getElementById('tile'+(tile+9)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+9)+");'/>";
     document.getElementById('tile'+(tile+11)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+11)+");'/>";
-  }     
+  }    
+  else if (units[tile] == 10) {
+    document.getElementById('tile'+(tile-10)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile-10)+");'/>";
+    document.getElementById('tile'+(tile-9)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile-9)+");'/>";
+    document.getElementById('tile'+(tile-11)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile-11)+");'/>";
+    document.getElementById('tile'+(tile+1)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+1)+");'/>";
+    document.getElementById('tile'+(tile-1)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile-1)+");'/>";
+    document.getElementById('tile'+(tile+10)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+10)+");'/>";
+    document.getElementById('tile'+(tile+9)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+9)+");'/>";
+    document.getElementById('tile'+(tile+11)).innerHTML = "<img src='pics/target.png' onclick='move("+tile+","+(tile+11)+");'/>";
+  }
 }
 function removeshow(tile,des) {
     document.getElementById('tile'+(tile-10)).innerHTML = "";
