@@ -76,6 +76,10 @@ function buy(tile) {
     document.getElementById('buy').innerHTML = "<h1>Bob</h1>";
     showmove(tile);
   }
+  else if (units[tile] == 10) {
+    document.getElementById('buy').innerHTML = "<h1>Ship</h1>";
+    showmove(tile);
+  }
   else if (board[tile] == 1) {
     document.getElementById('buy').innerHTML = "<h1>Land</h1>";
   }
