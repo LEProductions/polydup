@@ -82,6 +82,9 @@ function buy(tile) {
   else if (board[tile] == 2) {
     document.getElementById('buy').innerHTML = "<h1>City</h1><buys onclick='newThing(`bob`,"+tile+");'>Bob</buys>";
   }
+  else if (board[tile] == 3) {
+    document.getElementById('buy').innerHTML = "<h1>Port</h1>";
+  }
   else {
     document.getElementById('buy').innerHTML = "<h1>Water</h1><buys onclick='newThing(`port`,"+tile+");'>Port</buys>";
   }
@@ -94,7 +97,14 @@ function move(tile,des) {
     document.getElementById('tile'+des).innerHTML = "<img src='pics/bob2.png'/>";
     units[des] = units[tile];
     units[tile] = 0;
-  }      
+  }   
+  else if (units[tile] == 1 && board[des] == 3) {
+    removeshow(tile,des);
+    document.getElementById('tile'+tile).innerHTML = "";
+    document.getElementById('tile'+des).innerHTML = "<img src='pics/ship.png'/>";
+    units[des] = units[tile];
+    units[tile] = 0;
+  } 
   else  {
     removeshow(tile,des);
     alert("cant move here");
