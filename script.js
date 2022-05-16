@@ -54,7 +54,7 @@ function newThing(type,cords) {
   if (type == 'port') {
     //cities[turn] += 2; 
     document.getElementById('tile'+cords).innerHTML = "<img src='pics/port.png'/>";
-    board[cords] = 6;
+    board[cords] = 3;
   }
   else if (type == 'bob') { document.getElementById('tile'+cords).innerHTML = "<img src='pics/bob2.png'/>";
     units[cords] = 1;
