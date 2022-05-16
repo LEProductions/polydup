@@ -88,13 +88,16 @@ function buy(tile) {
   document.getElementById('buy').style.display = "block";
 }
 function move(tile,des) { 
-  removeshow(tile,des);
-  document.getElementById('tile'+tile).innerHTML = "";
   if (units[tile] == 1 && board[des] != 0) {
+    removeshow(tile,des);
+    document.getElementById('tile'+tile).innerHTML = "";
     document.getElementById('tile'+des).innerHTML = "<img src='pics/bob2.png'/>";
     units[des] = units[tile];
     units[tile] = 0;
   }      
+  else  {
+    alert("water tile");
+  }
 }
 function showmove(tile) {
   if (units[tile] == 1) {
